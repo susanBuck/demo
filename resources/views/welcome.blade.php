@@ -1,1 +1,1 @@
-<h1>Hello from MyApp!</h1>
+<h1>Demo App</h1>
