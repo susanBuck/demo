@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return 'This is the test route...';
 });
+
+Route::get('/users', function () {
+    dump(\App\Models\User::all()->toArray());
+});
