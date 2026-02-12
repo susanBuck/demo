@@ -1,0 +1,39 @@
+---
+title: Hello, Quarto
+format: html
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+## Meet the cars
+The [mtcars](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars) dataset contains fuel consumption and design characteristics for `{r} nrow(mtcars)` cars from the 1970s.
+
+This dataset is built into R and is commonly used for teaching data analysis and visualization.
+
+@fig-plot-mtcars shows the **relationship between a car’s weight and its fuel efficiency**.
+
+```{r}
+#| label: fig-plot-mtcars
+#| fig-cap: Fuel efficiency vs weight for cars in the mtcars dataset
+#| echo: false
+ggplot(mtcars, 
+       aes(x = wt, y = mpg)) +
+  geom_point(aes(color = factor(cyl)), size = 2) +
+  labs(
+    x = "Weight (1000 lbs)",
+    y = "Miles per gallon",
+    color = "Number of cylinders"
+  ) +
+  theme_minimal()
+```
+
+## Compute Pearson Correlation
+We compute the Pearson correlation coefficient between vehicle weight (wt) and fuel efficiency (mpg) to quantify the linear relationship shown in the plot. Pearson's $r$ ranges from $-1$ to $1$; a negative value indicates heavier cars tend to have lower mpg. The computed value helps assess the strength and direction of this association.
+
+```{r}
+cor_mpg_wt <- cor(mtcars$wt, mtcars$mpg, method = "pearson")
+cor_mpg_wt
+```
